@@ -19,7 +19,8 @@ function activate(context) {
 		// check if the text editor is open or not
 		if(isFileOpen){
 			// get current file full path
-			let currentFilePath = vscode.window.activeTextEditor.document.fileName;
+			let currentFilePath = vscode.window.activeTextEditor.document.fileName.replace(/\\/g, "/");
+
 			if(currentFilePath){
 				// build relative file path
 				let relativePath = 'force-app'+ currentFilePath.split('force-app')[1].split('.').slice(0, -1).join('.');

@@ -9,22 +9,72 @@ const vscode = require('vscode');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
+	let sfTerminal;
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "sfdevtools" is now active!');
+	// Deploy file command
+	let deployDisposable = vscode.commands.registerCommand('sfdevtools.deployFile', function () {
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('sfdevtools.helloWorld', function () {
-		// The code you place here will be executed every time your command is executed
+		var isFileOpen = vscode.window.activeTextEditor;
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from SFDevTools!');
+		// check if the text editor is open or not
+		if(isFileOpen){
+			// get current file full path
+			let currentFilePath = vscode.window.activeTextEditor.document.fileName;
+			if(currentFilePath){
+				// build relative file path
+				let relativePath = 'force-app'+ currentFilePath.split('force-app')[1].split('.').slice(0, -1).join('.');
+				
+				// build final command
+				let terminalCommand = 'sfdx force:source:deploy -p '+relativePath;
+				executeCommandInTerminal(terminalCommand);
+			}
+		}
+		// if text editor not open, the show error message
+		else{
+			// Display a message box to the user
+			vscode.window.showErrorMessage('Open any file to deploy/retrieve');
+		}
 	});
 
-	context.subscriptions.push(disposable);
+	context.subscriptions.push(deployDisposable);
+
+	// Retrieve file command
+	let retrieveDisposable = vscode.commands.registerCommand('sfdevtools.retrieveFile', function () {
+		var isFileOpen = vscode.window.activeTextEditor;
+
+		// check if the text editor is open or not
+		if(isFileOpen){
+			// get current file full path
+			let currentFilePath = vscode.window.activeTextEditor.document.fileName;
+			if(currentFilePath){
+				// build relative file path
+				let relativePath = 'force-app'+ currentFilePath.split('force-app')[1].split('.').slice(0, -1).join('.');
+				
+				// build final command
+				let terminalCommand = 'sfdx force:source:retrieve -p '+relativePath;
+				executeCommandInTerminal(terminalCommand);
+			}
+		}
+		// if text editor not open, the show error message
+		else{
+			// Display a message box to the user
+			vscode.window.showErrorMessage('Open any file to deploy/retrieve');
+		}
+	});
+
+	context.subscriptions.push(retrieveDisposable);
+
+	// execute command
+	function executeCommandInTerminal(terminalCommand) {
+		// if terminal is already there, then close it
+		if (sfTerminal) sfTerminal.dispose();
+		
+		// create new terminal
+		sfTerminal = vscode.window.createTerminal('SFDevTools');
+		sfTerminal.show();
+		sfTerminal.sendText(terminalCommand);
+		return sfTerminal;
+	}
 }
 
 // this method is called when your extension is deactivated

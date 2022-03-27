@@ -10,6 +10,6 @@ All notable changes to the "sfdevtools" extension will be documented in this fil
 ## [0.0.2] - 24-03-2022
 - Now it can support older versions of vs code 
 
-## [0.0.4] - 27-03-2022
+## [0.0.5] - 27-03-2022
 - Fixed some minor bugs
 - Improved performance  

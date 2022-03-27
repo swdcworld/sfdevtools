@@ -1,8 +1,8 @@
 {
   "name": "sfdevtools",
-  "displayName": "SFDevTools",
+  "displayName": "Salesforce Dev Tools",
   "description": "Some useful handy tools for salesforce developers.",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "publisher": "Nagarjuna",
   "repository": {
     "type": "git",
@@ -21,8 +21,9 @@
     "vscode": "^1.0.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages"
   ],
+  "keywords": ['Salesforce','Dev Tools','SF Tools'],
   "activationEvents": [
     "onCommand:sfdevtools.deployFile",
     "onCommand:sfdevtools.retrieveFile"

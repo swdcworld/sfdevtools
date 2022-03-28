@@ -13,3 +13,6 @@ All notable changes to the "sfdevtools" extension will be documented in this fil
 ## [0.0.5] - 27-03-2022
 - Fixed some minor bugs
 - Improved performance  
+
+## [0.0.6] - 28-03-2022
+- Added key bindings for commands 

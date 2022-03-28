@@ -2,7 +2,7 @@
   "name": "sfdevtools",
   "displayName": "Salesforce Dev Tools",
   "description": "Some useful handy tools for salesforce developers.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "publisher": "Nagarjuna",
   "repository": {
     "type": "git",
@@ -42,6 +42,18 @@
       {
         "command": "sfdevtools.retrieveFile",
         "title": "DT: Retrieve current file"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "sfdevtools.deployFile",
+        "key": "Ctrl+Shift+D",
+        "mac": "Cmd+Shift+D"
+      },
+      {
+        "command": "sfdevtools.retrieveFile",
+        "key": "Ctrl+Shift+R",
+        "mac": "Cmd+Shift+R"
       }
     ]
   },

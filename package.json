@@ -55,7 +55,13 @@
         "key": "Ctrl+Shift+R",
         "mac": "Cmd+Shift+R"
       }
-    ]
+    ],
+    "snippets": [
+      {
+          "language": "apex",
+          "path": "./snippets/apex.code-snippets"
+      }
+  ]
   },
   "scripts": {
     "lint": "eslint .",

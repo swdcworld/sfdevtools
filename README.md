@@ -11,5 +11,7 @@ Salesforce doesn't provide right click menu to show deploy/retrieve for scratch 
 
 1. Open any file, and do your chanes and open command palette (press Ctrl+Shift+P on Windows or Linux, or Cmd+Shift+P on macOS) select **DT: Deploy current file** for *Deploy* and **DT: Retrieve current file** for *Retrive* from org. 
 ![Example Deploy](https://raw.githubusercontent.com/swdcworld/sfdevtools/main/images/Feature-1-deploy-retrieve.png)
-
+2. Key bindings:
+    *Deploy current file*: press **Ctrl+Shift+D** on Windows or Linux, or Cmd+Shift+D on macOS
+    *Retrieve current file*: press **Ctrl+Shift+R** on Windows or Linux, or Cmd+Shift+R on macOS
 
